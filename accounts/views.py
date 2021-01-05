@@ -32,7 +32,7 @@ def register_user(request):
                 user.username = get_username(user.first_name)
                 password = form.cleaned_data['password']
                 user.set_password(password)
-                user.save()
+                user.save()                
     except Exception:        
         response.update({"error": "something went wrong."})        
     return JsonResponse(response)

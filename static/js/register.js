@@ -78,7 +78,7 @@ function register(event){
             if (error)
                 document.getElementById("register-form-err").innerHTML = error;         
             else
-                window.location.href = "accounts/login";
+                window.location.href = "/accounts/login";
         });
     }
 }
