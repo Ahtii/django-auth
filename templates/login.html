@@ -4,6 +4,8 @@
         <title>mysite</title>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- Fontawesome -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- Custome CSS -->
         <link rel="stylesheet" href='/static/css/login.css'>
     </head>
@@ -19,8 +21,25 @@
                         <div class="form-group">
                             <input id="email-input" type="text" class="form-control" placeholder="Email or Username"/><br>
                             <input id="password-input" type="password" class="form-control" placeholder="Password"/><br>
-                            <button type="submit" class="btn btn-primary"> Login </button><br>
-                            <span id="login-form-err" class="err-msg"></span>
+                            <button type="submit" class="btn btn-primary"> Login </button><br>                            
+                            <span id="login-form-err" class="err-msg"></span><br>
+                            <div class="row">
+                                <div class="col-5">
+                                    <hr>
+                                </div>
+                                <div class="col-2">
+                                    <span style="color: orange;"> Or </span>
+                                </div>
+                                <div class="col-5">
+                                    <hr>
+                                </div>
+                            </div><br>
+                            <span class="social">
+                                <i class="fa fa-google"></i>
+                            </span>  &nbsp; &nbsp; &nbsp;                          
+                            <span class="social">
+                                <i class="fa fa-facebook-square"></i>
+                            </span>                                                        
                         </div>            
                     </form>
                 </div>               
