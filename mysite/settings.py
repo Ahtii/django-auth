@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'authentication.auth_backend.EmailOrUsernameBackend',
+    'accounts.auth_backend.EmailOrUsernameBackend',
 )
 
 

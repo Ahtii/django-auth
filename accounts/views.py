@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from .forms import *
@@ -42,10 +42,12 @@ def register_user(request):
 def login_user(request):
     response = {}
     try:
+        print("working inside")        
         if request.is_ajax():
             email = request.POST.get('email')
-            password = request.POST.get('password')
+            password = request.POST.get('password')            
             user = authenticate(username=email, password=password)
+            print(user)
             if user:
                 login(request, user)
             else:    
@@ -54,3 +56,7 @@ def login_user(request):
         response.update({"error": "something went wrong."}) 
     return JsonResponse(response)    
 
+# logout user here
+def logout_user(request):
+    logout(request)
+    return redirect('/')    

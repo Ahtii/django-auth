@@ -2,16 +2,90 @@
     <head>
         <meta charset="utf-8">
         <title>mysite</title>
+        <!-- Boostrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- Custome CSS -->
         <link rel="stylesheet" href='/static/css/index.css'>
     </head>
     <body>
-        <div class="welcome-msg">
-            <h3>Please <strong class="standout-text">register</strong> if you are new or <strong class="standout-text">login</strong> to your account.</h3>
-            <hr class="welcome-msg-sep"><br><br>
-            <button id="register-btn" type="button" class="btn btn-dark" onclick="loadRegisterPage()"> Register </button>  &nbsp; &nbsp;
-            <button id="login-btn" type="button" class="btn btn-primary" onclick="loadLoginPage()"> Login </button>           
-        </div>        
+        {% if user.is_authenticated %}
+            <div class="auth">
+                <div class="profile-block container-fluid">
+                    <div class="card text-center">
+                        <div class="card-header">  
+                            <div class="row">
+                                <div class="col-8">
+                                    <h5 class="text-left"> Hi <strong>{{ user.first_name.title }}</strong></h5>
+                                </div>
+                                <div class="col-4">
+                                    <form id="logout-form" method="post" action="accounts/logout"> {% csrf_token %}
+                                        <button type="submit" class="btn btn-light"> Logout </button>
+                                    </form>                                     
+                                </div>                                
+                            </div>    
+                            <hr>                         
+                            <div class="row">
+                                <div class="col-12">
+                                    <span class="label">Last Login: &nbsp; &nbsp; &nbsp; {{ user.last_login }} </span>                                   
+                                </div>
+                            </div>                                                      
+                        </div>
+                        <div class="card-body">   
+                            <div class="row">
+                                <div class="col-6">
+                                    <span class="label">First Name</span>
+                                </div>
+                                <div class="col-6">
+                                    <span class="label">{{ user.first_name.title }}</span>
+                                </div>
+                            </div> 
+                            <div class="row">
+                                <div class="col-6">
+                                    <span class="label">Last Name</span>
+                                </div>
+                                <div class="col-6">
+                                    <span class="label">{{ user.last_name.title }}</span>
+                                </div>
+                            </div> 
+                            <div class="row">
+                                <div class="col-6">
+                                    <span class="label">Username</span>
+                                </div>
+                                <div class="col-6">
+                                    <span class="label">{{ user.username }}</span>
+                                </div>
+                            </div>                                      
+                            <div class="row">
+                                <div class="col-6">
+                                    <span class="label">Email</span>
+                                </div>
+                                <div class="col-6">
+                                    <span class="label">{{ user.email }}</span>
+                                </div>
+                            </div>   
+                            <div class="row">
+                                <div class="col-6">
+                                    <span class="label">Join Date</span>
+                                </div>
+                                <div class="col-6">
+                                    <span class="label">{{ user.date_joined }}</span>
+                                </div>
+                            </div>                                             
+                        </div>               
+                    </div>
+                </div>     
+            </div> 
+        {% else %}
+            <div class="non-auth">
+                <h3>Please <strong class="standout-text">register</strong> if you are new or <strong class="standout-text">login</strong> to your account.</h3>
+                <hr class="non-auth-sep"><br><br>
+                <button id="register-btn" type="button" class="btn btn-dark" onclick="loadRegisterPage()"> Register </button>  &nbsp; &nbsp;
+                <button id="login-btn" type="button" class="btn btn-primary" onclick="loadLoginPage()"> Login </button>           
+            </div>  
+        {% endif %}    
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+        <!-- Custome JS -->
         <script type="text/javascript" src="/static/js/index.js"></script>
     </body>
 </html>
