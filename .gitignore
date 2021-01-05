@@ -1,4 +1,6 @@
 *__pycache__/
+*accounts/__pycache__/
+*mysite/__pycache__/
 *.py[cod]
 *$py.class
 .idea/
