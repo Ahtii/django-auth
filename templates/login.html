@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>mysite</title>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- Custome CSS -->
+        <link rel="stylesheet" href='/static/css/login.css'>
+    </head>
+    <body>
+        <!-- LOGIN FORM -->
+        <div class="login-block container-fluid">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h5> Login With Us </h5>
+                </div>
+                <div class="card-body">                    
+                    <form id="login-form" method="post" onsubmit="login(event)">{% csrf_token %}
+                        <div class="form-group">
+                            <input id="email-input" type="text" class="form-control" placeholder="Email or Username"/><br>
+                            <input id="password-input" type="password" class="form-control" placeholder="Password"/><br>
+                            <button type="submit" class="btn btn-primary"> Login </button><br>
+                            <span id="login-form-err" class="err-msg"></span>
+                        </div>            
+                    </form>
+                </div>               
+            </div>
+        </div>                
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Custome JS -->
+        <script type="text/javascript" src="/static/js/login.js"></script>
+    </body>
+</html>

@@ -1,0 +1,13 @@
+.welcome-msg {
+    text-align: center;
+    font-size: 10px;
+    margin-top: 50px;
+}
+
+.welcome-msg-sep {
+    width: 60%;
+}
+
+.standout-text {
+    color: teal;
+}

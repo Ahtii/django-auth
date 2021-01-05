@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>mysite</title>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- Custome CSS -->
+        <link rel="stylesheet" href='/static/css/register.css'>
+    </head>
+    <body>
+        <!-- REGISTER FORM -->
+        <div class="register-block container-fluid">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h5> Register With Us </h5>
+                </div>
+                <div class="card-body">                    
+                    <form id="register-form" method="post" onsubmit="register(event)">{% csrf_token %}
+                        <div class="form-group">
+                            <input id="firstname-input" type="text" class="form-control" placeholder="First Name" onkeyup="validateFirstName(event)"/>
+                            <span id="firstname-err" class="err-msg"></span><br>
+                            <input id="lastname-input" type="text" class="form-control" placeholder="Last Name" onkeyup="validateLastName(event)"/>
+                            <span id="lastname-err" class="err-msg"></span><br>
+                            <input id="email-input" type="email" class="form-control" placeholder="Email" onkeyup="validateEmail(event)"/>
+                            <span id="email-err" class="err-msg"></span><br>
+                            <input id="password-input" type="password" class="form-control" placeholder="Password" onkeyup="validatePassword(event)"/>
+                            <span id="password-err" class="err-msg"></span><br><br>                            
+                            <button type="submit" class="btn btn-dark"> Register </button><br>
+                            <span id="register-form-err" class="err-msg"></span>
+                        </div>            
+                    </form>
+                </div>               
+            </div>
+        </div>                
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Custome JS -->
+        <script type="text/javascript" src="/static/js/register.js"></script>
+    </body>
+</html>
