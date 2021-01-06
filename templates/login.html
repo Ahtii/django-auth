@@ -34,11 +34,11 @@
                                     <hr>
                                 </div>
                             </div><br>
-                            <span class="social">
-                                <i class="fa fa-google"></i>
+                            <span class="social">                                
+                                <a href="{% url 'social:begin' 'google-oauth2' %}"><i class="fa fa-google"></i></a>
                             </span>  &nbsp; &nbsp; &nbsp;                          
                             <span class="social">
-                                <i class="fa fa-facebook-square"></i>
+                                <a href="{% url 'social:begin' 'facebook' %}"><i class="fa fa-facebook-square"></i></a>
                             </span>                                                        
                         </div>            
                     </form>
