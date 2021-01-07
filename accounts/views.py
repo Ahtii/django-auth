@@ -41,13 +41,11 @@ def register_user(request):
  # login the user here
 def login_user(request):
     response = {}
-    try:
-        print("working inside")        
+    try:           
         if request.is_ajax():
             email = request.POST.get('email')
             password = request.POST.get('password')            
-            user = authenticate(username=email, password=password)
-            print(user)
+            user = authenticate(username=email, password=password)            
             if user:
                 login(request, user)
             else:    
