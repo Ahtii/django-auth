@@ -25,15 +25,18 @@ def register_user(request):
         if request.is_ajax():
             form_class = RegisterForm    
             form = form_class(request.POST)
-            if form.is_valid():
-                user = form.save(commit=False)
-                user.first_name = form.cleaned_data['first_name'].lower()
-                user.last_name = form.last_name = form.cleaned_data['last_name'].lower()
-                user.username = get_username(user.first_name)
-                password = form.cleaned_data['password']
-                user.set_password(password)
-                user.save()                
-    except Exception:        
+            if form.is_valid():                
+                if User.objects.filter(email=form.cleaned_data['email']).exists():
+                    response.update({"error": "email already registered"})
+                else:    
+                    user = form.save(commit=False)
+                    user.first_name = form.cleaned_data['first_name'].lower()
+                    user.last_name = form.last_name = form.cleaned_data['last_name'].lower()
+                    user.username = get_username(user.first_name)
+                    password = form.cleaned_data['password']
+                    user.set_password(password)
+                    user.save()                
+    except Exception:            
         response.update({"error": "something went wrong."})        
     return JsonResponse(response)
 
@@ -44,12 +47,12 @@ def login_user(request):
     try:           
         if request.is_ajax():
             email = request.POST.get('email')
-            password = request.POST.get('password')            
-            user = authenticate(username=email, password=password)            
+            password = request.POST.get('password')                      
+            user = authenticate(username=email, password=password)                      
             if user:
                 login(request, user)
             else:    
-                response.update({"error": "Invalid username or password"})
+                response.update({"error": "Invalid username or password"})            
     except Exception:
         response.update({"error": "something went wrong."}) 
     return JsonResponse(response)    
