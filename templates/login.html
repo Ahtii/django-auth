@@ -17,33 +17,43 @@
                     <h5> Login With Us </h5>
                 </div>
                 <div class="card-body">                    
-                    <form id="login-form" method="post" onsubmit="login(event)">{% csrf_token %}
+                    <form id="login-form" method="post">{% csrf_token %}
                         <div class="form-group">
                             <input id="email-input" type="text" class="form-control" placeholder="Email or Username"/><br>
                             <input id="password-input" type="password" class="form-control" placeholder="Password"/><br>
-                            <button type="submit" class="btn btn-primary"> Login </button><br>                            
+                            <button type="submit" class="btn btn-primary" id="login"> Login </button><br>                            
                             <span id="login-form-err" class="err-msg"></span><br>
                             <div class="row">
-                                <div class="col-5">
+                                <div class="col-3">
                                     <hr>
                                 </div>
-                                <div class="col-2">
-                                    <span style="color: orange;"> Or </span>
+                                <div class="col-6">
+                                    <span style="color: teal;"> Or Login With </span>
                                 </div>
-                                <div class="col-5">
+                                <div class="col-3">
                                     <hr>
                                 </div>
-                            </div><br>
-                            <a href="{% url 'social:begin' 'google-oauth2' %}"><span class="social">                                
-                                <i class="fa fa-google"></i>
-                            </span></a>  &nbsp; &nbsp; &nbsp;                          
-                            <a href="{% url 'social:begin' 'facebook' %}"><span class="social">
-                                <i class="fa fa-facebook-square"></i>
-                            </span></a>                                                        
-                        </div>            
+                            </div>                                                                                                              
+                        </div> 
+                        <div class="row">     
+                            <div class="col-md-2">
+                            </div>                       
+                            <div class="col-6 col-md-4">
+                                <button type="submit" name="google" class="social google" id="google-login">                                                          
+                                </button>
+                                <p class="google-txt"> Google </p>
+                            </div>                            
+                            <div class="col-6 col-md-4">
+                                <button type="submit" name="facebook" class="social facebook" id="facebook-login">                                                          
+                                </button>
+                                <p class="facebook-txt"> Facebook </p>
+                            </div>   
+                            <div class="col-md-2">
+                            </div>                                         
+                        </div>
                     </form>
                 </div>               
-            </div>
+            </div> 
         </div>                
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

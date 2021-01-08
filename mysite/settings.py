@@ -44,8 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',    
     'django.contrib.messages',
-    'django.contrib.staticfiles',    
-    'social_django',
+    'django.contrib.staticfiles'    
 ]
 
 MIDDLEWARE = [
@@ -58,6 +57,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware'
 ]
+
+CLIENT_SECRETS_JSON = os.path.join(BASE_DIR, 'cred.json')
 
 ROOT_URLCONF = 'mysite.urls'
 
@@ -82,33 +83,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.open_id.OpenIdAuth',
-    'social_core.backends.google.GoogleOpenId',
-    'social_core.backends.google.GoogleOAuth2',
-    'social_core.backends.google.GoogleOAuth',
-    'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
     'accounts.auth_backend.EmailOrUsernameBackend',    
 )
-
-# SOCIAL LOGIN INFORMATION
-
-LOGIN_URL = '/auth/login/google-oauth2/'
-LOGOUT_URL = 'accounts/logout'
-LOGIN_REDIRECT_URL = '/'
-
-# Google Secrets
-
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('GOOGLE_OAUTH2_KEY')
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('GOOGLE_OAUTH2_SECRET')
-
-# Facebook Secrets
-
-SOCIAL_AUTH_FACEBOOK_KEY = config('FACEBOOK_KEY')
-SOCIAL_AUTH_FACEBOOK_SECRET = config('FACEBOOK_SECRET')
-
-
-SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases

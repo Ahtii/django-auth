@@ -10,6 +10,9 @@ class EmailOrUsernameBackend(object):
 
     def authenticate(self, request, username=None, password=None, **kwargs):
        
+        if username == None or password == None:
+            return None
+
         if '@' in username:
             kwargs = {'email': username}
         else:
