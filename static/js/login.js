@@ -2,64 +2,38 @@
 
 /* CALLING GOOGLE REST LOGIN API */
 
-    // google login entrypoint
-    start();
-    function start() {
-        gapi.load('auth2', function(){
-            auth2 = gapi.auth2.init({
-                client_id: "283912086812-tlsu5g6d1djkmbpf3df448gknj6ekqn8.apps.googleusercontent.com"
-            });
+// google login entrypoint
+start();
+function start() {
+    gapi.load('auth2', function(){
+        auth2 = gapi.auth2.init({
+            client_id: "283912086812-tlsu5g6d1djkmbpf3df448gknj6ekqn8.apps.googleusercontent.com"
         });
-    }
+    });
+}
 
-    // callback to send authentication code to backend
-    function signInCallback(authResult){
-        if (authResult['code']) {
-            // $.ajax({
-            //     type: 'POST',
-            //     url: 'login_user',
-            //     headers: {
-            //         'X-Requested-With': 'XMLHttpRequest'
-            //     },
-            //     contentType: "application/json",
-            //     dataType: "json",
-            //     data: JSON.stringify({"type": "google", "token": authResult['code']}),
-            //     success: function(response){
-            //         var error = response["error"];
-            //         if (error){
-            //             alert(error);
-            //         } 
-            //         else{
-            //             //genProfile();
-            //             console.log("show profile");
-            //             window.location.reload()
-            //             //window.location.href = "/chat";
-            //         }    
-            //     }
-            // });
-            //console.log($('#google-form input[name=csrfmiddlewaretoken]').val());
-            console.log($('#login-form input[name=csrfmiddlewaretoken]').val());
-            var data = {
-                "provider": "google",
-                "token": authResult['code'],
-                csrfmiddlewaretoken: $('#login-form input[name=csrfmiddlewaretoken]').val()
-            };
-            $.post("social_login", JSON.stringify(data), function(response){
-                console.log(response);
-            });
-        }
-    }
-    // attach callback on click of google login button
-    // $("#google-signin").on("click", function(){        
-    //     auth2.grantOfflineAccess().then(signInCallback);
-    // });
-    // $("#google-login").on("click", function(event){
-    //     event.preventDefault();
-    //     console.log("submitted google");
-    //     auth2.grantOfflineAccess().then(signInCallback);
-    // });
+// facebook login entrypoint
+// window.fbAsyncInit = function() {
+//     FB.init({
+//       appId            : '3546525952134892',
+//       autoLogAppEvents : true,
+//       xfbml            : true,
+//       version          : 'v2.8'
+//     });    
+// };
+// (function(d, s, id){
+//     var js, fjs = d.getElementsByTagName(s)[0];
+//     if (d.getElementById(id)) {return;}
+//     js = d.createElement(s); js.id = id;
+//     js.src = "https://connect.facebook.net/en_US/sdk.js";
+//     fjs.parentNode.insertBefore(js, fjs);
+//   }(document, 'script', 'facebook-jssdk')); 
 
+// function statusChangeCallback(response){
+//     console.log(response);
+// }  
 
+// get providers auth code which is passed to backend for the actual API call
 async function getProviderInfo(type, data){    
 
     if (type == 'google') {        
@@ -69,6 +43,14 @@ async function getProviderInfo(type, data){
             return data;            
         });                        
     } 
+    //else if (type == 'facebook'){
+    //     // FB.getLoginStatus(function(response) {
+    //     //     statusChangeCallback(response);
+    //     // }); 
+    //    console.log(await FB.getAuthResponse())
+    //    //console.log(authcode);
+
+    // }       
 }
 
 

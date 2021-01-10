@@ -5,5 +5,6 @@
 *$py.class
 .idea/
 .vs/
+.vscode/
 .env
 cred.json
